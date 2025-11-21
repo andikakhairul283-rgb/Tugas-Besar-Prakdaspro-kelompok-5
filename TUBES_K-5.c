@@ -2,6 +2,7 @@
 
 int main()
 {
-  printf("tak tau hmmz");
+  printf("halo");
 }
+
 
