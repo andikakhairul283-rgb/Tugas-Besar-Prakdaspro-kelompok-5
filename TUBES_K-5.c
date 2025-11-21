@@ -2,5 +2,6 @@
 
 int main()
 {
-  printf("tak tau");
+  printf("tak tau hmmz");
 }
+
