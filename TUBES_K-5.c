@@ -2,7 +2,8 @@
 
 int main()
 {
-  printf("halo");
+  printf("dika fk ui");
 }
+
 
 
