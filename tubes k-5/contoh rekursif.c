@@ -1,6 +1,8 @@
 #include <stdio.h>
-void balik(const char*teks){
-    if (*teks == '\0') {
+void balik(const char*teks)
+{
+    if (*teks == '\0') 
+    {
         return;
     }
 
@@ -8,7 +10,8 @@ void balik(const char*teks){
     putchar(*teks);
 }
 
-int main() {
+int main() 
+{
     char teks[100];
     printf("Masukkan kalimat: ");
     fgets(teks, sizeof(teks), stdin);
