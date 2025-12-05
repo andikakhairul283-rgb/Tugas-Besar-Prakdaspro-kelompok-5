@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 // Mengubah karakter menjadi angka 0-26
 int char_to_num(char ch, char arr[]) {
@@ -72,6 +72,7 @@ int main()
 
   return 0;
 }
+
 
 
 
