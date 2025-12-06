@@ -15,7 +15,7 @@ char num_to_char(int num, char arr[]) {
     return ' ';
 }
 
-// gcd untuk cek apakah det bisa di-inverse
+// cek apakah det bisa di-inverse
 int gcd(int a, int b) {
     while (b != 0) {
         int t = a % b;
