@@ -2,3 +2,47 @@
 #include <string.h>
 
 const int geser = 3;
+ALFABET  = 26;
+
+void proses(const char *kata, int indeks, int mode) {
+    
+    if (kata[indeks] == '\0') {
+        return; 
+    }
+
+    // logika utama
+
+    char huruf = kata[indeks];
+    
+    int awal = huruf - 'A';  
+    int akhir;
+    if (mode == 1) {
+        // Enkripsi: Tambah geseran
+        akhir = awal + geser;
+    } else {
+        // Deskripsi: Kurangi geseran
+        akhir = awal - geser;
+    }
+
+    int hasil = (akhir % ALFABET + ALFABET) % ALFABET;
+    char hasil_huruf = (char)(hasil + 'A');
+    printf("%c", hasil_huruf);
+
+    proses(kata, indeks + 1, mode);
+}
+
+int main() {
+    char teks[] = "REKURSIF";
+    printf("Teks Asli:   %s\n", teks);
+
+    printf("1. Enkripsi: ");
+    proses(teks, 0, 1);
+    printf("\n");
+
+    printf("2. Deskripsi: ");
+    proses("RHNXUVLI", 0, -1); 
+    printf("\n");
+
+    return 0;
+}
+
