@@ -39,7 +39,7 @@ void hill_encrypt(char plaintext[], int key[2][2], char arr[]) {
     int nums[200];
     int len = 0;
 
-    // KONVERSI plaintext -> angka
+    // KONVERSI plaintext ke angka
     for (int i = 0; plaintext[i] != '\0'; i++) {
         nums[len++] = char_to_num(plaintext[i], arr);
     }
