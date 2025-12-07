@@ -62,3 +62,21 @@ void rekursif(int nums[], int index, int len, /blm/
 {
 
     // BASE CASE: selesai
+if (index >= len)
+    {
+        return;
+    }
+
+    int x1 = nums[index];
+    int x2 = nums[index + 1];
+
+    printf("[%d %d]\n", x1, x2);
+
+    // Proses matematika matriks
+    int r1 = (matrix[0][0] * x1 + matrix[0][1] * x2) % 27;
+    int r2 = (matrix[1][0] * x1 + matrix[1][1] * x2) % 27;
+
+    if (r1 < 0)
+        r1 += 27;
+    if (r2 < 0)
+        r2 += 27;
