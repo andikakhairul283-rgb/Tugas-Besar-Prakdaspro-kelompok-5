@@ -106,3 +106,21 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
 
     char encrypted_text[200];
     int en_index = 0;
+  // PANGGIL REKURSI (satu-satunya proses enkripsi)
+    rekursif(nums, 0, len, key, arr, encrypted_text, &en_index);
+
+    encrypted_text[en_index] = '\0';
+
+    printf("\nHasil enkripsi : %s\n", encrypted_text);
+
+    // ==========================
+    // FILE HANDLING: SIMPAN SANDI + KUNCI DALAM SATU FILE
+    // ==========================
+    FILE *fout = fopen("output_enkripsi.txt", "w");
+    if (fout == NULL)
+    {
+        printf("Gagal membuat file output_enkripsi.txt!\n");
+    }
+    else
+    {
+        fprintf(fout, "Ini adalah sandi dan enkripsi anda,\n");
