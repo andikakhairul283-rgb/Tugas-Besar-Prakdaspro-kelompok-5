@@ -22,5 +22,58 @@ void konversiHurufKeAngka(char teks[]) {
 
     printf("\n");
 }
+void konversiAngkaKeHuruf(int arr[], int n) {
+    int i;
 
+    printf("\n=== Hasil Konversi Angka ke Huruf ===\n");
 
+    for (i = 0; i < n; i++) {
+        if (arr[i] >= 1 && arr[i] <= 26) {
+            printf("%c", arr[i] - 1 + 'A');
+        } else {
+            printf("_"); // jika angka tidak valid
+        }
+    }
+
+    printf("\n");
+}
+
+int main() {
+    int pilihan;
+    char teks[200];
+    int angka[200];
+    int n, i;
+
+    do {
+        printf("\n===== PROGRAM KONVERSI HURUF <-> ANGKA =====\n");
+        printf("1. Huruf ke Angka\n");
+        printf("2. Angka ke Huruf\n");
+        printf("3. Keluar\n");
+        printf("Pilih menu: ");
+        scanf("%d", &pilihan);
+        getchar(); // menghapus newline
+
+        switch (pilihan) {
+            case 1:
+                printf("\nMasukkan teks huruf: ");
+                fgets(teks, sizeof(teks), stdin);
+
+                // hilangkan newline
+                teks[strcspn(teks, "\n")] = 0;
+
+                konversiHurufKeAngka(teks);
+                break;
+
+            case 2:
+                printf("\nMasukkan jumlah angka: ");
+                scanf("%d", &n);
+
+                printf("Masukkan angka (pisahkan dengan spasi): ");
+                for (i = 0; i < n; i++) {
+                    scanf("%d", &angka[i]);
+                }
+
+                konversiAngkaKeHuruf(angka, n);
+                break;
+
+        
