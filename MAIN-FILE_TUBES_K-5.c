@@ -80,3 +80,29 @@ if (index >= len)
         r1 += 27;
     if (r2 < 0)
         r2 += 27;
+  // Convert ke huruf (output huruf)
+    output_text[(*out_index)++] = angka_ke_karakter(r1, arr);
+    output_text[(*out_index)++] = angka_ke_karakter(r2, arr);
+
+    // REKURSI → lanjut pasangan berikutnya
+    rekursif(nums, index + 2, len, matrix, arr, output_text, out_index);
+}
+
+void enkripsi(char plaintext[], int key[2][2], char arr[])
+{
+
+    int nums[200];
+    int len = 0;
+
+    for (int i = 0; plaintext[i] != '\0'; i++)
+    {
+        nums[len++] = karakter_ke_angka(plaintext[i], arr);
+    }
+
+    if (len % 2 == 1)
+        nums[len++] = 0;
+
+    printf("\n--- Proses Enkripsi ---\n");
+
+    char encrypted_text[200];
+    int en_index = 0;
