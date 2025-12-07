@@ -252,6 +252,68 @@ int main()
     int b1k1, b1k2, b2k1, b2k2;
     char plaintext[200];
 
+// Input plaintext
+    printf("Masukkan plaintext: ");
+    fgets(plaintext, sizeof(plaintext), stdin);
+    for (int i = 0; plaintext[i] != '\0'; i++)
+    {
+        if (plaintext[i] == '\n')
+        {
+            plaintext[i] = '\0';
+            break;
+        }
+    }
+
+    // Input key
+    int key[2][2];
+
+    while (1)
+    {
+        printf("Input key baris pertama kolom pertama : ");
+        scanf("%d", &key[0][0]);
+        printf("Input key baris pertama kolom kedua   : ");
+        scanf("%d", &key[0][1]);
+        printf("Input key baris kedua kolom pertama   : ");
+        scanf("%d", &key[1][0]);
+        printf("Input key baris kedua kolom kedua     : ");
+        scanf("%d", &key[1][1]);
+
+ if (key_valid(key))
+        {
+            printf("\nKunci VALID. siap dijalankan.\n\n");
+            break;
+        }
+        else
+        {
+            printf("\n Kunci TIDAK VALID!\n");
+            printf("Pastikan:\n");
+            printf("- Determinan tidak sama dengan 0\n");
+            printf("- Determinan memiliki invers modulo 27\n");
+            printf("- Tidak semua elemen matriks sama\n");
+            printf("Silahkan input ulang.\n\n");
+        }
+    }
+
+    // Pilih fungsi
+    char pilihan;
+    printf("1. Enkripsi\n2. Dekripsi\nPilih proses yang akan dijalankan: ");
+    scanf(" %c", &pilihan); // spasi penting untuk mengabaikan newline sebelumnya
+
+    if (pilihan == '1')
+    {
+        enkripsi(plaintext, key, arr);
+    }
+    else if (pilihan == '2')
+    {
+        dekripsi(plaintext, key, arr);
+    }
+    else
+    {
+        printf("Input tidak valid. Tidak ada fungsi yang dijalankan.\n");
+    }
+
+return 0;
+}
 
 
 
