@@ -31,6 +31,18 @@ int gcd(int a, int b) {
     return a;
 }
 
+// cari invers determinan mod 27 (extended Euclid sederhana)
+int mod_inverse(int det) {
+    det %= 27;
+    if (det < 0) det += 27;
+
+    for (int x = 1; x < 27; x++) {
+        if ((det * x) % 27 == 1) return x;
+    }
+    return -1; // tidak ada invers
+}
+
+
 // Enkripsi Hill Cipher 2x2
 void hill_encrypt(char plaintext[], int key[2][2], char arr[]) {
 
@@ -82,6 +94,7 @@ int main()
 
   return 0;
 }
+
 
 
 
