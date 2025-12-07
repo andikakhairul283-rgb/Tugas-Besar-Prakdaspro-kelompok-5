@@ -124,3 +124,39 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
     else
     {
         fprintf(fout, "Ini adalah sandi dan enkripsi anda,\n");
+
+fprintf(fout, "Terimakasih sudah menggunakan program ini.\n\n");
+
+        fprintf(fout, "=== Hasil Enkripsi ===\n");
+        fprintf(fout, "%s\n\n", encrypted_text);
+
+        fprintf(fout, "=== Matriks Kunci (2x2) ===\n");
+        fprintf(fout, "[ %d  %d ]\n", key[0][0], key[0][1]);
+        fprintf(fout, "[ %d  %d ]\n\n", key[1][0], key[1][1]);
+
+        fclose(fout);
+        printf("\nFile 'output_enkripsi.txt' berhasil dibuat.\n");
+    }
+}
+
+void dekripsi(char ciphertext[], int key[2][2], char arr[])
+{
+    int a = key[0][0], b = key[0][1];
+    int c = key[1][0], d = key[1][1];
+
+    int det = a * d - b * c;
+// Normalisasi determinan ke modulo 27 (0..26)
+    int det_mod = det % 27;
+    if (det_mod < 0)
+        det_mod += 27;
+
+ // cek gcd pada det_mod dan 27
+    if (gcd(det_mod, 27) != 1)
+    {
+        printf("\nKunci tidak bisa diinverse.\n");
+        return;
+    }
+
+    // gunakan det_mod untuk mencari invers
+    int det_inv = mod_inverse(det_mod);
+
