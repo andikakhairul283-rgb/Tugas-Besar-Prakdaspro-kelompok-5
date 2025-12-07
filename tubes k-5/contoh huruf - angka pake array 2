@@ -75,5 +75,17 @@ int main() {
 
                 konversiAngkaKeHuruf(angka, n);
                 break;
+    case 3:
+                printf("\nProgram selesai.\n");
+                break;
 
-        
+            default:
+                printf("\nPilihan tidak valid!\n");
+        }
+
+    } while (pilihan != 3);
+
+    return 0;
+}
+
+
