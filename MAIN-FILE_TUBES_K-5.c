@@ -21,6 +21,16 @@ char num_to_char(int num, char arr[]) {
     return ' ';
 }
 
+// gcd digunakan untuk cek apakah det dapat di-invers
+int gcd(int a, int b) {
+    while (b != 0) {
+        int t = a % b;
+        a = b;
+        b = t;
+    }
+    return a;
+}
+
 // Enkripsi Hill Cipher 2x2
 void hill_encrypt(char plaintext[], int key[2][2], char arr[]) {
 
@@ -72,6 +82,7 @@ int main()
 
   return 0;
 }
+
 
 
 
