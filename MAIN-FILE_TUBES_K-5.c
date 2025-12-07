@@ -237,6 +237,21 @@ int key_valid(int key[2][2])
     return 1; // valid
 }
 
+int main()
+{
+    void enkripsi(char plaintext[], int key[2][2], char arr[]);
+    void dekripsi(char ciphertext[], int key[2][2], char arr[]);
+
+    char arr[27];
+    arr[0] = ' ';
+    for (int i = 1; i <= 26; i++)
+    {
+        arr[i] = 'a' + (i - 1);
+    }
+
+    int b1k1, b1k2, b2k1, b2k2;
+    char plaintext[200];
+
 
 
 
