@@ -187,6 +187,57 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
         nums[len++] = karakter_ke_angka(ciphertext[i], arr);
 
     char decrypted[200];
+int dec_i = 0;
+
+    // PANGGIL REKURSI pakai inverse key
+    rekursif(nums, 0, len, inv_key, arr, decrypted, &dec_i);
+
+    decrypted[dec_i] = '\0';
+
+    printf("\nHasil dekripsi : %s\n", decrypted);
+
+    FILE *fdec = fopen("decrypted.txt", "w");
+    if (fdec == NULL)
+    {
+        printf("Gagal membuat file decrypted.txt!\n");
+    }
+    else
+    {
+        fprintf(fdec, "%s", decrypted);
+        fclose(fdec);
+        printf("\nFile 'decrypted.txt' berhasil dibuat.\n");
+    }
+}
+
+int key_valid(int key[2][2])
+{
+    int a = key[0][0], b = key[0][1];
+    int c = key[1][0], d = key[1][1];
+
+    // cek semua elemen sama
+    if (a == b && b == c && c == d)
+    {
+        return 0;
+    }
+
+    int det = a * d - b * c;
+
+    det %= 27;
+    if (det < 0)
+        det += 27;
+
+    // determinan tidak boleh 0
+    if (det == 0)
+        return 0;
+
+    // determinan harus punya invers modulo 27
+    if (mod_inverse(det) == -1)
+        return 0;
+
+    return 1; // valid
+}
+
+
 
 
 
