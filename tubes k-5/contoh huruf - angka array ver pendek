@@ -1,1 +1,39 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char teks[100];
+    int angka[100];
+    int n, i;
+
+    // --- Konversi Huruf ke Angka ---
+    printf("Masukkan teks huruf: ");
+    fgets(teks, sizeof(teks), stdin);
+
+    printf("Hasil huruf → angka: ");
+    for (i = 0; teks[i] != '\0'; i++) {
+        if (isalpha(teks[i])) {
+            angka[i] = toupper(teks[i]) - 'A' + 1;
+            printf("%d ", angka[i]);
+        }
+    }
+
+    // --- Konversi Angka ke Huruf ---
+    printf("\n\nMasukkan jumlah angka: ");
+    scanf("%d", &n);
+
+    printf("Masukkan angka-angka: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &angka[i]);
+    }
+
+    printf("Hasil angka → huruf: ");
+    for (i = 0; i < n; i++) {
+        if (angka[i] >= 1 && angka[i] <= 26) {
+            printf("%c", angka[i] - 1 + 'A');
+        }
+    }
+
+    return 0;
+}
 
