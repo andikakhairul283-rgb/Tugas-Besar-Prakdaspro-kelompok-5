@@ -56,13 +56,14 @@ int mod_inverse(int det)
     return -1; // tidak ada invers
 }
 
-void rekursif(int nums[], int index, int len, /blm/
-              int matrix[2][2], char arr[],
+void rekursif(int nums[], int index, int len,
+              int matrix[2][2],
+              char arr[],
               char output_text[], int *out_index)
 {
 
     // BASE CASE: selesai
-if (index >= len)
+    if (index >= len)
     {
         return;
     }
@@ -80,7 +81,7 @@ if (index >= len)
         r1 += 27;
     if (r2 < 0)
         r2 += 27;
-  // Convert ke huruf (output huruf)
+    // Convert ke huruf (output huruf)
     output_text[(*out_index)++] = angka_ke_karakter(r1, arr);
     output_text[(*out_index)++] = angka_ke_karakter(r2, arr);
 
@@ -106,7 +107,7 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
 
     char encrypted_text[200];
     int en_index = 0;
-  // PANGGIL REKURSI (satu-satunya proses enkripsi)
+    // PANGGIL REKURSI (satu-satunya proses enkripsi)
     rekursif(nums, 0, len, key, arr, encrypted_text, &en_index);
 
     encrypted_text[en_index] = '\0';
@@ -125,7 +126,7 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
     {
         fprintf(fout, "Ini adalah sandi dan enkripsi anda,\n");
 
-fprintf(fout, "Terimakasih sudah menggunakan program ini.\n\n");
+        fprintf(fout, "Terimakasih sudah menggunakan program ini.\n\n");
 
         fprintf(fout, "=== Hasil Enkripsi ===\n");
         fprintf(fout, "%s\n\n", encrypted_text);
@@ -145,12 +146,12 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
     int c = key[1][0], d = key[1][1];
 
     int det = a * d - b * c;
-// Normalisasi determinan ke modulo 27 (0..26)
+    // Normalisasi determinan ke modulo 27 (0..26)
     int det_mod = det % 27;
     if (det_mod < 0)
         det_mod += 27;
 
- // cek gcd pada det_mod dan 27
+    // cek gcd pada det_mod dan 27
     if (gcd(det_mod, 27) != 1)
     {
         printf("\nKunci tidak bisa diinverse.\n");
@@ -159,14 +160,14 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
 
     // gunakan det_mod untuk mencari invers
     int det_inv = mod_inverse(det_mod);
-// ... sisanya tetap sama, tapi gunakan det_inv yang didapat di atas
+    // ... sisanya tetap sama, tapi gunakan det_inv yang didapat di atas
     int inv_key[2][2];
     inv_key[0][0] = d;
     inv_key[0][1] = -b;
     inv_key[1][0] = -c;
     inv_key[1][1] = a;
 
- for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 2; j++)
         {
@@ -176,18 +177,18 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
         }
     }
 
- printf("\n--- Matriks Invers ---\n");
+    printf("\n--- Matriks Invers ---\n");
     printf("[ %d %d ]\n", inv_key[0][0], inv_key[0][1]);
     printf("[ %d %d ]\n", inv_key[1][0], inv_key[1][1]);
 
- // Konversi ciphertext ke angka
+    // Konversi ciphertext ke angka
     int nums[200];
     int len = 0;
     for (int i = 0; ciphertext[i] != '\0'; i++)
         nums[len++] = karakter_ke_angka(ciphertext[i], arr);
 
     char decrypted[200];
-int dec_i = 0;
+    int dec_i = 0;
 
     // PANGGIL REKURSI pakai inverse key
     rekursif(nums, 0, len, inv_key, arr, decrypted, &dec_i);
@@ -252,7 +253,7 @@ int main()
     int b1k1, b1k2, b2k1, b2k2;
     char plaintext[200];
 
-// Input plaintext
+    // Input plaintext
     printf("Masukkan plaintext: ");
     fgets(plaintext, sizeof(plaintext), stdin);
     for (int i = 0; plaintext[i] != '\0'; i++)
@@ -278,7 +279,7 @@ int main()
         printf("Input key baris kedua kolom kedua     : ");
         scanf("%d", &key[1][1]);
 
- if (key_valid(key))
+        if (key_valid(key))
         {
             printf("\nKunci VALID. siap dijalankan.\n\n");
             break;
@@ -312,9 +313,5 @@ int main()
         printf("Input tidak valid. Tidak ada fungsi yang dijalankan.\n");
     }
 
-return 0;
+    return 0;
 }
-
-
-
-
