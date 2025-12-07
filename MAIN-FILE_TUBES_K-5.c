@@ -159,4 +159,34 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
 
     // gunakan det_mod untuk mencari invers
     int det_inv = mod_inverse(det_mod);
+// ... sisanya tetap sama, tapi gunakan det_inv yang didapat di atas
+    int inv_key[2][2];
+    inv_key[0][0] = d;
+    inv_key[0][1] = -b;
+    inv_key[1][0] = -c;
+    inv_key[1][1] = a;
+
+ for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            inv_key[i][j] = (inv_key[i][j] * det_inv) % 27;
+            if (inv_key[i][j] < 0)
+                inv_key[i][j] += 27;
+        }
+    }
+
+ printf("\n--- Matriks Invers ---\n");
+    printf("[ %d %d ]\n", inv_key[0][0], inv_key[0][1]);
+    printf("[ %d %d ]\n", inv_key[1][0], inv_key[1][1]);
+
+ // Konversi ciphertext ke angka
+    int nums[200];
+    int len = 0;
+    for (int i = 0; ciphertext[i] != '\0'; i++)
+        nums[len++] = karakter_ke_angka(ciphertext[i], arr);
+
+    char decrypted[200];
+
+
 
