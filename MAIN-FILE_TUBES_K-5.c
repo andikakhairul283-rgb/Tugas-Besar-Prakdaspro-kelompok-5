@@ -9,6 +9,19 @@
 #include <stdio.h>
 #include <stdlib.h> // <-- untuk abs()
 
+// ==== WARNA OUTPUT TERMINAL ==== //
+#define RESET       "\033[0m"
+#define FG_RED      "\033[91m"
+#define FG_GREEN    "\033[92m"
+#define FG_YELLOW   "\033[93m"
+#define FG_BLUE     "\033[94m"
+#define FG_WHITE    "\033[97m"
+
+#define BG_RED      "\033[41m"
+#define BG_GREEN    "\033[42m"
+#define BG_YELLOW   "\033[43m"
+#define BG_BLUE     "\033[44m"
+
 // Mengubah karakter menjadi angka 0-26
 int karakter_ke_angka(char ch, char arr[])
 {
@@ -323,5 +336,6 @@ int main()
 
     return 0;
 }
+
 
 
