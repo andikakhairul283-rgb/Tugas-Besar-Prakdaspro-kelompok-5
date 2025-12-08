@@ -274,7 +274,7 @@ int main()
     char plaintext[200];
 
     // Input plaintext
-    printf("Teks yang mau diubah: ");
+    printf("Teks yang mau diubah (huruf): ");
     fgets(plaintext, sizeof(plaintext), stdin);
     for (int i = 0; plaintext[i] != '\0'; i++)
     {
@@ -338,5 +338,6 @@ int main()
     } while (pilihan != '1' && pilihan != '2');
     return 0;
 }
+
 
 
