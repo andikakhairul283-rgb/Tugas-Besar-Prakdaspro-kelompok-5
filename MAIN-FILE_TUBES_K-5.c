@@ -124,7 +124,7 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
     if (len % 2 == 1)
         nums[len++] = 0;
 
-    printf("\n--- Proses Enkripsi ---\n");
+    printf(FG_BLUE "\n--- Proses Enkripsi ---\n" RESET);
 
     char encrypted_text[200];
     int en_index = 0;
@@ -157,7 +157,7 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
         fprintf(fout, "[ %d  %d ]\n\n", key[1][0], key[1][1]);
 
         fclose(fout);
-        printf("\nFile 'output_enkripsi.txt' berhasil dibuat.\n");
+        printf(FG_GREEN "\nFile 'output_enkripsi.txt' berhasil dibuat.\n" RESET);
     }
 }
 
@@ -198,7 +198,7 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
         }
     }
 
-    printf("\n--- Matriks Invers ---\n");
+    printf(FG_BLUE "\n--- Proses Dekripsi (Menggunakan Matriks Invers) ---\n" RESET);
     printf("[ %d %d ]\n", inv_key[0][0], inv_key[0][1]);
     printf("[ %d %d ]\n", inv_key[1][0], inv_key[1][1]);
 
@@ -221,13 +221,13 @@ void dekripsi(char ciphertext[], int key[2][2], char arr[])
     FILE *fdec = fopen("decrypted.txt", "w");
     if (fdec == NULL)
     {
-        printf("Gagal membuat file decrypted.txt!\n");
+        printf(BG_RED FG_WHITE " Gagal membuat file decrypted.txt! " RESET "\n");
     }
     else
     {
         fprintf(fdec, "%s", decrypted);
         fclose(fdec);
-        printf("\nFile 'decrypted.txt' berhasil dibuat.\n");
+        printf(FG_GREEN "\nFile 'decrypted.txt' berhasil dibuat.\n" RESET);
     }
 }
 
@@ -336,6 +336,7 @@ int main()
 
     return 0;
 }
+
 
 
 
