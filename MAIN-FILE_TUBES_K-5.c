@@ -1,3 +1,11 @@
+// Tugas besar kelompok 5
+// - Ghibran Sultan Alfarabi - 251402031
+// - Andika Chairul Ilham - 251402047
+// - Muhammad Fakhry Adrian Daulay - 251402053
+// - Siti Naifah Batubara - 251402067
+// - Syifa Nazira - 251402126
+
+
 #include <stdio.h>
 #include <stdlib.h> // <-- untuk abs()
 
@@ -315,3 +323,4 @@ int main()
 
     return 0;
 }
+
