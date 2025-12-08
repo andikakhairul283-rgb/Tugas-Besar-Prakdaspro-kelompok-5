@@ -128,7 +128,7 @@ void enkripsi(char plaintext[], int key[2][2], char arr[])
     FILE *fout = fopen("output_enkripsi.txt", "w");
     if (fout == NULL)
     {
-        printf("Gagal membuat file output_enkripsi.txt!\n");
+        printf(BG_RED FG_WHITE " Gagal membuat file output_enkripsi.txt! " RESET "\n");
     }
     else
     {
@@ -289,17 +289,17 @@ int main()
 
         if (key_valid(key))
         {
-            printf("\nKunci VALID. siap dijalankan.\n\n");
+            printf(FG_GREEN "\nKunci VALID. siap dijalankan.\n\n" RESET);
             break;
         }
         else
         {
-            printf("\n Kunci TIDAK VALID!\n");
-            printf("Pastikan:\n");
-            printf("- Determinan tidak sama dengan 0\n");
-            printf("- Determinan memiliki invers modulo 27\n");
-            printf("- Tidak semua elemen matriks sama\n");
-            printf("Silahkan input ulang.\n\n");
+            printf(BG_RED FG_WHITE "\n Kunci TIDAK VALID! \n" RESET);
+            printf(FG_YELLOW "Pastikan:\n" RESET);
+            printf(FG_YELLOW "- Determinan tidak sama dengan 0\n" RESET);
+            printf(FG_YELLOW "- Determinan memiliki invers modulo 27\n" RESET);
+            printf(FG_YELLOW "- Tidak semua elemen matriks sama\n" RESET);
+            printf(FG_YELLOW "Silahkan input ulang.\n\n" RESET);
         }
     }
 
@@ -323,4 +323,5 @@ int main()
 
     return 0;
 }
+
 
